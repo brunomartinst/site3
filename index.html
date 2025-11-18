@@ -1,0 +1,2550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hotel Aurora Bay – Refúgio à beira-mar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hotel Aurora Bay – refúgio à beira-mar com suítes exclusivas, gastronomia autoral e experiências inesquecíveis." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-primary: #0c3c5f;
+      --color-primary-soft: #145b88;
+      --color-accent: #f0b35b;
+      --color-bg: #f5f5f8;
+      --color-text: #1c2430;
+      --color-muted: #7b8592;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 28, 63, 0.14);
+      --shadow-subtle: 0 10px 28px rgba(15, 28, 63, 0.1);
+      --nav-height: 80px;
+      --transition-fast: 0.25s ease;
+      --transition-slow: 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.9rem 1.9rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast), opacity var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-accent), #ffd399);
+      color: #201810;
+      box-shadow: 0 16px 35px rgba(240, 179, 91, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 48px rgba(240, 179, 91, 0.55);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      color: #ffffff;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #f8fafc;
+      font-size: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.3);
+    }
+
+    .section {
+      padding: 6rem 0 5rem;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--color-text);
+    }
+
+    .section-subtitle {
+      font-size: 0.98rem;
+      color: var(--color-muted);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity var(--transition-slow), transform var(--transition-slow);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* NAVBAR */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 40;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      transition: background var(--transition-fast), box-shadow var(--transition-fast), backdrop-filter var(--transition-fast), transform 0.25s ease;
+      transform: translateY(0);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 15% 0%, #ffffff 0, #e5f6ff 22%, #0c3c5f 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 25px rgba(12, 60, 95, 0.7);
+    }
+
+    .brand-mark span {
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 2px solid rgba(12, 60, 95, 0.15);
+      background: rgba(12, 60, 95, 0.1);
+      position: relative;
+    }
+
+    .brand-mark span::before {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 999px;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 1px rgba(12, 60, 95, 0.15);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .brand-tagline {
+      font-size: 0.7rem;
+      color: rgba(241, 245, 249, 0.8);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--color-accent), #ffe1a8);
+      transition: width 0.22s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-cta-text {
+      font-size: 0.8rem;
+      color: rgba(241, 245, 249, 0.85);
+    }
+
+    .nav-cta-text strong {
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .navbar.scrolled {
+      background: rgba(9, 12, 23, 0.88);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(22px);
+    }
+
+    .navbar.scrolled .brand-name {
+      color: #e5f3ff;
+    }
+
+    .navbar.scrolled .brand-tagline {
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .navbar.scrolled .nav-links {
+      color: #cbd5f5;
+    }
+
+    .navbar.scrolled .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.6);
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(15, 23, 42, 0.8);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: #ffffff;
+      transition: all 0.22s ease;
+      position: relative;
+    }
+
+    .nav-toggle span::before {
+      position: absolute;
+      top: -5px;
+    }
+
+    .nav-toggle span::after {
+      position: absolute;
+      top: 5px;
+    }
+
+    .nav-toggle.active span {
+      background: transparent;
+    }
+
+    .nav-toggle.active span::before {
+      transform: translateY(5px) rotate(45deg);
+    }
+
+    .nav-toggle.active span::after {
+      transform: translateY(-5px) rotate(-45deg);
+    }
+
+    .nav-menu-mobile {
+      display: none;
+      position: fixed;
+      inset: var(--nav-height) 0 auto 0;
+      background: radial-gradient(circle at 0 0, #0b1120 0, #020617 48%);
+      padding: 1.5rem;
+      z-index: 35;
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-menu-mobile.open {
+      display: block;
+    }
+
+    .nav-menu-mobile ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+    }
+
+    .nav-menu-mobile li a {
+      display: block;
+      padding: 0.3rem 0;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      color: #ffffff;
+      padding-top: var(--nav-height);
+      padding-bottom: 7rem;
+      background-color: #020617;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at top left, rgba(15, 118, 210, 0.55) 0, transparent 55%),
+        radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.5) 0, transparent 52%),
+        linear-gradient(145deg, #020617, #020617);
+      z-index: 0;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      background-image: url("https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1920");
+      background-size: cover;
+      background-position: center center;
+      opacity: 0.87;
+      mix-blend-mode: screen;
+      filter: saturate(1.1) contrast(1.02);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 16% 0, rgba(15, 23, 42, 0.85) 0, transparent 48%),
+        linear-gradient(120deg, rgba(15, 23, 42, 0.96) 0, rgba(15, 23, 42, 0.88) 42%, rgba(15, 23, 42, 0.35) 72%, rgba(15, 23, 42, 0.9) 100%);
+      z-index: 1;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 3.5rem;
+      align-items: center;
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 3.8rem 1.5rem 4.5rem;
+    }
+
+    .hero-left {
+      max-width: 640px;
+    }
+
+    .hero-left-top {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-rating span.star {
+      color: #fbbf24;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 4vw, 3.4rem);
+      line-height: 1.07;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(120deg, #ffe29f, #feca57, #ff9f43);
+      -webkit-background-clip: text;
+      color: transparent;
+      position: relative;
+    }
+
+    .hero-title span.highlight::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(254, 202, 87, 0.22), transparent);
+      opacity: 0.7;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: #cbd5f5;
+      max-width: 510px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.8rem;
+      color: #a5b4fc;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-meta-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      gap: 1.3rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+    }
+
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    .hero-badge-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 0%, #ffffff 0, #dbeafe 28%, #0ea5e9 78%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0c4a6e;
+      box-shadow: 0 12px 24px rgba(8, 47, 73, 0.8);
+    }
+
+    .hero-badge strong {
+      display: block;
+      font-size: 0.95rem;
+      color: #e5f1ff;
+    }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .hero-photo-card {
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(15, 23, 42, 0.6);
+      background: rgba(15, 23, 42, 0.96);
+      max-width: 380px;
+    }
+
+    .hero-photo-main img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .hero-photo-caption {
+      padding: 0.9rem 1.1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      color: #e5e7eb;
+      font-size: 0.86rem;
+    }
+
+    .hero-photo-label {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .hero-photo-caption strong {
+      font-size: 1.05rem;
+    }
+
+    .hero-photo-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+      color: #cbd5f5;
+    }
+
+/* HERO BOOKING BAR */
+
+.hero-booking-wrapper {
+  position: absolute;
+  left: 0;
+  bottom: 2.4rem;
+  width: 100%;
+  z-index: 5;
+}
+
+.hero-booking-bar {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  /* sombra menor para não “invadir” tanto a seção de baixo */
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.85);
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 0.8rem 1.8rem;
+  backdrop-filter: blur(18px);
+}
+
+.hero-booking-form {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  flex: 1;
+}
+
+.hero-booking-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  color: #e5e7eb;
+  min-width: 0;
+}
+
+/* campo de datas fica mais largo para os dois inputs caberem lado a lado */
+.hero-booking-field:first-child {
+  flex: 1.4;
+}
+
+/* adultos / crianças mais compactos */
+.hero-booking-field:nth-child(2),
+.hero-booking-field:nth-child(3) {
+  flex: 0.6;
+  max-width: 170px;
+}
+
+.hero-booking-label {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.68rem;
+  color: #9ca3af;
+}
+
+.hero-booking-input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 1);
+  border: 1px solid rgba(148, 163, 184, 0.9);
+  cursor: pointer;
+}
+
+.hero-booking-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  background: rgba(15, 23, 42, 1);
+  flex-shrink: 0;
+}
+
+.hero-booking-input-group input,
+.hero-booking-input-group select {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #e5e7eb;
+  font-family: inherit;
+  font-size: 0.9rem;
+  min-width: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* select ocupa toda a largura do grupo, fica mais fácil clicar */
+.hero-booking-input-group select {
+  width: 100%;
+  padding-right: 1.6rem;
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+/* melhora contraste dentro do dropdown */
+.hero-booking-input-group select option {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+.hero-booking-input-group input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+.hero-booking-date-range {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+/* largura fixa para não “invadir” o campo de adultos */
+.hero-booking-date-range input {
+  width: 115px;
+}
+
+.hero-booking-date-range span.separator {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.hero-booking-btn {
+  margin-left: auto;
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.7rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: #f0b35b;
+  color: #1f2933;
+  box-shadow: 0 18px 35px rgba(240, 179, 91, 0.7);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  white-space: nowrap;
+}
+
+.hero-booking-btn:hover {
+  background: #f1c36f;
+  transform: translateY(-1px);
+  box-shadow: 0 24px 45px rgba(240, 179, 91, 0.85);
+}
+
+    /* ROOMS */
+
+    .rooms-section {
+      background: #ffffff;
+      border-radius: 40px 40px 0 0;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 -10px 45px rgba(15, 23, 42, 0.25);
+      margin-top: 0; /* removido o margin-top negativo para a sombra não invadir a próxima seção */
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.8rem;
+    }
+
+    .room-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-subtle);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      position: relative;
+    }
+
+    .room-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 45px rgba(15, 23, 42, 0.16);
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .room-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      max-height: 190px;
+    }
+
+    .room-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+
+    .room-card:hover .room-image-wrapper img {
+      transform: scale(1.06);
+    }
+
+    .room-tag {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      background: rgba(15, 23, 42, 0.7);
+      color: #e5e7eb;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      backdrop-filter: blur(10px);
+    }
+
+    .room-body {
+      padding: 1rem 1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .room-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .room-meta {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .room-price {
+      margin-top: 0.4rem;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .room-price strong {
+      font-size: 1.05rem;
+      color: var(--color-primary-soft);
+    }
+
+    .room-price span {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+    }
+
+    .room-cta {
+      margin-top: 0.6rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .room-cta button {
+      font-size: 0.75rem;
+      padding-inline: 1rem;
+      padding-block: 0.45rem;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.12);
+      background: #f9fafb;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .room-cta button:hover {
+      background: #111827;
+      color: #e5e7eb;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.26);
+    }
+
+    /* SPLIT SECTIONS */
+
+    .split-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .split-media {
+      position: relative;
+    }
+
+    .split-main-image {
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .split-main-image img {
+      width: 100%;
+      height: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .split-media:hover .split-main-image img {
+      transform: scale(1.04);
+    }
+
+    .split-floating-card {
+      position: absolute;
+      left: -10px;
+      bottom: -20px;
+      padding: 0.9rem 1.1rem;
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 22px;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.8);
+      color: #e5e7eb;
+      font-size: 0.8rem;
+      max-width: 250px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      backdrop-filter: blur(20px);
+    }
+
+    .split-floating-card strong {
+      display: block;
+      font-size: 0.88rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .split-floating-meta {
+      margin-top: 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .split-floating-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .split-content-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .split-content-title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+
+    .split-content-text {
+      font-size: 0.96rem;
+      color: var(--color-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .split-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 0.8rem 1.8rem;
+      margin-bottom: 1.4rem;
+      font-size: 0.9rem;
+      color: var(--color-text);
+    }
+
+    .split-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .split-list-bullet {
+      margin-top: 0.25rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(12, 148, 136, 0.4);
+      background: rgba(16, 185, 129, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+    }
+
+    /* DESTINATION */
+
+    .destination-section {
+      background: radial-gradient(circle at top, #eff6ff 0, #e5f4ff 30%, #f5f5f8 70%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .destination-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+      gap: 2.6rem;
+      align-items: center;
+    }
+
+    .destination-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .destination-pill {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.85);
+      background: rgba(255, 255, 255, 0.65);
+      color: var(--color-muted);
+      backdrop-filter: blur(10px);
+    }
+
+    .destination-highlight {
+      margin-top: 1.1rem;
+      padding: 0.8rem 0.9rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      display: flex;
+      gap: 0.7rem;
+      font-size: 0.86rem;
+      color: var(--color-text);
+    }
+
+    .destination-highlight strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .destination-highlight-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 0 0, #bfdbfe 0, #1d4ed8 76%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #eff6ff;
+      font-size: 0.9rem;
+    }
+
+    .destination-gallery {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 0.9rem;
+    }
+
+    .destination-image-main,
+    .destination-image-small {
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .destination-image-main img,
+    .destination-image-small img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-height: 320px;
+      transition: transform 0.6s ease;
+    }
+
+    .destination-image-main:hover img,
+    .destination-image-small:hover img {
+      transform: scale(1.04);
+    }
+
+    .destination-badge {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.84);
+      color: #e5e7eb;
+      font-size: 0.78rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .destination-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    /* GALLERY */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .gallery-item {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 12px 25px rgba(15, 23, 42, 0.18);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-height: 220px;
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0, rgba(15, 23, 42, 0.2) 45%, rgba(15, 23, 42, 0.9) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0.9rem;
+      left: 0.9rem;
+      right: 0.9rem;
+      color: #f9fafb;
+      font-size: 0.78rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .gallery-caption strong {
+      font-size: 0.9rem;
+    }
+
+    /* REVIEWS */
+
+    .reviews-section {
+      background: #0b1220;
+      color: #e5e7eb;
+      border-radius: 40px;
+      margin-top: 4rem;
+      padding-bottom: 4.5rem;
+      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.75);
+    }
+
+    .reviews-header .section-title {
+      color: #f1f5f9;
+    }
+
+    .reviews-header .section-subtitle {
+      color: #9ca3af;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 2.2rem;
+      align-items: flex-start;
+    }
+
+    .score-card {
+      border-radius: 30px;
+      background: radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.4) 0, #020617 65%);
+      padding: 1.4rem 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+    }
+
+    .score-value {
+      font-size: 3rem;
+      font-weight: 600;
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+    }
+
+    .score-value span.total {
+      font-size: 1.7rem;
+      color: #9ca3af;
+    }
+
+    .score-stars {
+      margin-top: 0.5rem;
+      color: #fbbf24;
+      font-size: 1.1rem;
+    }
+
+    .score-meta {
+      margin-top: 0.5rem;
+      font-size: 0.86rem;
+      color: #cbd5f5;
+    }
+
+    .score-badges {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.76rem;
+    }
+
+    .score-badge {
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.75);
+    }
+
+    .reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+      font-size: 0.88rem;
+      color: #cbd5f5;
+    }
+
+    .review-item {
+      border-radius: 18px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.25) 0, rgba(15, 23, 42, 0.95) 55%);
+      padding: 0.9rem 1rem;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.35rem;
+      font-size: 0.76rem;
+      color: #9ca3af;
+    }
+
+    .review-header strong {
+      font-size: 0.86rem;
+      color: #e5e7eb;
+    }
+
+    .review-badge {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(52, 211, 153, 0.6);
+      background: rgba(16, 185, 129, 0.05);
+      color: #6ee7b7;
+      font-size: 0.72rem;
+    }
+
+    /* FAQ */
+
+    .faq-accordion {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .faq-item {
+      border-radius: 18px;
+      background: #f9fafb;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .faq-item.open {
+      border-color: rgba(148, 163, 184, 0.9);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+      background: #ffffff;
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 0.95rem 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-size: 0.94rem;
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    .faq-toggle-icon {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      transition: transform 0.25s ease;
+    }
+
+    .faq-item.open .faq-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1.1rem;
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      transition: max-height 0.3s ease, padding-bottom 0.25s ease;
+    }
+
+    .faq-answer p {
+      margin-bottom: 0.6rem;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 220px;
+      padding-bottom: 0.9rem;
+    }
+
+    /* CONTACT */
+
+    .contact-section {
+      padding-top: 4rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 2.4rem;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      border-radius: 26px;
+      background: #ffffff;
+      box-shadow: var(--shadow-subtle);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      padding: 1.5rem 1.6rem;
+    }
+
+    .contact-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-card p {
+      font-size: 0.92rem;
+      color: var(--color-muted);
+      margin-bottom: 1rem;
+    }
+
+    .contact-details {
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-details span {
+      display: flex;
+      gap: 0.5rem;
+      align-items: baseline;
+    }
+
+    .contact-details label {
+      min-width: 70px;
+      font-weight: 500;
+      color: var(--color-text);
+      font-size: 0.86rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      margin-top: 0.8rem;
+    }
+
+    .contact-form-row {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 0.65rem 0.9rem;
+      font-size: 0.88rem;
+      outline: none;
+      font-family: inherit;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+      background: #f9fafb;
+    }
+
+    .contact-form textarea {
+      border-radius: 18px;
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--color-primary-soft);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2);
+      background: #ffffff;
+    }
+
+    .contact-map {
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow-subtle);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      border: none;
+      display: block;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 2.5rem 0 2rem;
+      background: #020617;
+      color: #9ca3af;
+      margin-top: 3rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #e5e7eb;
+    }
+
+    /* MODAL */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 60;
+      backdrop-filter: blur(14px);
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      background: #0b1220;
+      color: #e5e7eb;
+      padding: 1.5rem 1.7rem 1.4rem;
+      border-radius: 22px;
+      max-width: 360px;
+      width: 90%;
+      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      position: relative;
+      text-align: left;
+    }
+
+    .modal h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal p {
+      font-size: 0.9rem;
+      color: #cbd5f5;
+      margin-bottom: 0.9rem;
+    }
+
+    .modal small {
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 0.45rem;
+      right: 0.6rem;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      line-height: 1;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.6);
+    }
+
+    .modal-close:hover {
+      background: #111827;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1024px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      }
+
+      .rooms-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .split-section,
+      .destination-grid,
+      .reviews-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .split-media {
+        order: -1;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 70px;
+  }
+
+  /* hero vira “coluna” no mobile: conteúdo em cima, card embaixo */
+  .hero {
+    display: block;
+    padding-top: 70px;
+    padding-bottom: 3rem;
+  }
+
+  .nav-links,
+  .nav-right {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 2.4rem;
+  }
+
+  .hero-right {
+    justify-content: center;
+  }
+
+  .hero-photo-card {
+    max-width: 360px;
+  }
+
+  /* card de reserva passa a ser bloco normal, logo abaixo do hero */
+  .hero-booking-wrapper {
+    position: static;
+    padding: 0 1.5rem 0;
+    margin-top: 1.4rem;
+  }
+
+  .hero-booking-bar {
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 24px;
+    gap: 0.9rem;
+  }
+
+  .hero-booking-field {
+    min-width: 100%;
+  }
+
+  .hero-booking-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rooms-section {
+    border-radius: 28px 28px 0 0;
+  }
+
+  .rooms-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .split-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .destination-gallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .reviews-section {
+    border-radius: 28px;
+  }
+
+  .contact-section {
+    padding-top: 3rem;
+  }
+
+  footer {
+    margin-top: 2rem;
+  }
+}
+    @media (max-width: 520px) {
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-badge-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-form-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <div class="nav-left">
+        <div class="brand-mark">
+          <span></span>
+        </div>
+        <div class="brand-text">
+          <div class="brand-name">Aurora Bay</div>
+          <div class="brand-tagline">Hotel &amp; Retreat</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#rooms">Suítes</a>
+        <a href="#dining">Gastronomia</a>
+        <a href="#experiences">Experiências</a>
+        <a href="#island">Destino</a>
+        <a href="#gallery">Galeria</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contato</a>
+      </nav>
+      <div class="nav-right">
+        <div class="nav-cta-text">
+          <span>Central de reservas</span>
+          <strong>+55 (11) 4000-2025</strong>
+        </div>
+        <button class="btn-ghost" data-modal="booking">
+          Reservar agora
+        </button>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span>
+      </button>
+    </div>
+    <div class="nav-menu-mobile" id="navMenuMobile">
+      <ul>
+        <li><a href="#rooms">Suítes</a></li>
+        <li><a href="#dining">Gastronomia</a></li>
+        <li><a href="#experiences">Experiências</a></li>
+        <li><a href="#island">Destino</a></li>
+        <li><a href="#gallery">Galeria</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="hero-media"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-inner">
+      <div class="hero-left reveal">
+        <div class="hero-left-top">
+          <div class="chip">
+            <span class="chip-dot"></span>
+            Check-in online em poucos cliques
+          </div>
+          <div class="hero-rating">
+            <span class="star">★</span>
+            <span><strong>9,5</strong> / 10</span>
+            <span>“Experiência inesquecível”</span>
+          </div>
+        </div>
+
+        <h1 class="hero-title">
+          Um refúgio à beira-mar para<br />
+          viver o seu momento mais <span class="highlight">inesquecível</span>.
+        </h1>
+        <p class="hero-subtitle">
+          O Hotel Aurora Bay combina suítes com vista para o mar, gastronomia autoral e experiências
+          sob medida em uma das regiões mais encantadoras do litoral.
+        </p>
+
+        <div class="hero-cta-row">
+          <button class="btn-primary" data-modal="booking">
+            Ver disponibilidade
+          </button>
+          <button class="btn-ghost" onclick="document.getElementById('gallery').scrollIntoView({behavior:'smooth'})">
+            Explorar fotos
+          </button>
+        </div>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="hero-meta-dot"></span>
+            <span>Check-in antecipado para reservas diretas</span>
+          </div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-dot" style="background:#f97316;"></span>
+            <span>Café da manhã incluso em todas as diárias</span>
+          </div>
+        </div>
+
+        <div class="hero-badge-row">
+          <div class="hero-badge">
+            <div class="hero-badge-icon">☀</div>
+            <div>
+              <strong>Pé na areia</strong>
+              <span>Vista panorâmica de toda a baía</span>
+            </div>
+          </div>
+          <div class="hero-badge">
+            <div class="hero-badge-icon" style="background: radial-gradient(circle at 0 0,#bbf7d0 0,#16a34a 75%);color:#022c22;">
+              ❖
+            </div>
+            <div>
+              <strong>Experiências curadas</strong>
+              <span>Passeios, trilhas e mergulhos organizados</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right reveal">
+        <div class="hero-photo-card">
+          <div class="hero-photo-main">
+            <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Fachada do hotel à noite com piscina" />
+          </div>
+          <div class="hero-photo-caption">
+            <div>
+              <span class="hero-photo-label">Aurora Bay Hotel</span>
+              <strong>Ilhabela · SP</strong>
+            </div>
+            <div class="hero-photo-meta">
+              <span>☀ 28ºC agora</span>
+              <span>✶ Pé na areia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking bar -->
+    <div class="hero-booking-wrapper reveal">
+      <div class="hero-booking-bar">
+        <form class="hero-booking-form">
+          <div class="hero-booking-field">
+            <div class="hero-booking-label">Entrada - Saída</div>
+            <div class="hero-booking-input-group">
+              <div class="hero-booking-icon">📅</div>
+              <div class="hero-booking-date-range">
+                <input type="date" value="2025-11-18" />
+                <span class="separator">–</span>
+                <input type="date" value="2025-11-20" />
+              </div>
+            </div>
+          </div>
+          <div class="hero-booking-field">
+            <div class="hero-booking-label">Adultos</div>
+            <div class="hero-booking-input-group booking-select-group">
+              <div class="hero-booking-icon">🧑</div>
+              <select>
+                <option>01</option>
+                <option selected>02</option>
+                <option>03</option>
+                <option>04</option>
+              </select>
+            </div>
+          </div>
+          <div class="hero-booking-field">
+            <div class="hero-booking-label">Crianças</div>
+            <div class="hero-booking-input-group booking-select-group">
+              <div class="hero-booking-icon">👦</div>
+              <select>
+                <option selected>00</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <button type="button" class="hero-booking-btn" data-modal="booking">
+            Consultar disponibilidade
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOMS -->
+  <section class="section rooms-section" id="rooms">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Suítes &amp; Quartos</div>
+        <h2 class="section-title">Conforto projetado para cada tipo de viagem</h2>
+        <p class="section-subtitle">
+          Se está em clima de casal, família ou amigos, nossas categorias de quarto combinam vista privilegiada,
+          varandas amplas e ambientes pensados nos detalhes.
+        </p>
+      </div>
+
+      <div class="rooms-grid reveal">
+        <!-- Room 1 -->
+        <article class="room-card">
+          <div class="room-image-wrapper">
+            <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Quarto com varanda e vista para o mar" />
+            <span class="room-tag">Vista mar</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-title">Suíte Aurora com Varanda</h3>
+            <div class="room-meta">
+              <span>2 adultos · 28 m²</span>
+              <span>Cama king · Varanda panorâmica</span>
+            </div>
+            <div class="room-price">
+              <div>
+                <span>Diárias a partir de</span><br />
+                <strong>R$ 980</strong> <span>/ noite</span>
+              </div>
+            </div>
+            <div class="room-cta">
+              <button type="button" data-modal="booking">Ver detalhes ▸</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Room 2 -->
+        <article class="room-card">
+          <div class="room-image-wrapper">
+            <img src="https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Quarto família com cama de casal e solteiro" />
+            <span class="room-tag">Família</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-title">Suíte Família Jardim</h3>
+            <div class="room-meta">
+              <span>Até 4 hóspedes · 32 m²</span>
+              <span>Dois ambientes · Varanda</span>
+            </div>
+            <div class="room-price">
+              <div>
+                <span>Diárias a partir de</span><br />
+                <strong>R$ 1.190</strong> <span>/ noite</span>
+              </div>
+            </div>
+            <div class="room-cta">
+              <button type="button" data-modal="booking">Ver detalhes ▸</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Room 3 -->
+        <article class="room-card">
+          <div class="room-image-wrapper">
+            <img src="https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Quarto com decoração clean" />
+            <span class="room-tag">Essencial</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-title">Quarto Essencial Lateral Mar</h3>
+            <div class="room-meta">
+              <span>2 hóspedes · 20 m²</span>
+              <span>Ótimo custo-benefício</span>
+            </div>
+            <div class="room-price">
+              <div>
+                <span>Diárias a partir de</span><br />
+                <strong>R$ 720</strong> <span>/ noite</span>
+              </div>
+            </div>
+            <div class="room-cta">
+              <button type="button" data-modal="booking">Ver detalhes ▸</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Room 4 -->
+        <article class="room-card">
+          <div class="room-image-wrapper">
+            <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Suíte premium com terraço" />
+            <span class="room-tag">Premium</span>
+          </div>
+          <div class="room-body">
+            <h3 class="room-title">Suíte Terraço Infinito</h3>
+            <div class="room-meta">
+              <span>Casais · 34 m²</span>
+              <span>Terraço privativo com espreguiçadeiras</span>
+            </div>
+            <div class="room-price">
+              <div>
+                <span>Diárias a partir de</span><br />
+                <strong>R$ 1.450</strong> <span>/ noite</span>
+              </div>
+            </div>
+            <div class="room-cta">
+              <button type="button" data-modal="booking">Ver detalhes ▸</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DINING -->
+  <section class="section" id="dining">
+    <div class="container split-section">
+      <div class="split-content reveal">
+        <div class="split-content-eyebrow">Gastronomia</div>
+        <h2 class="split-content-title">Sabores locais com vista para o mar</h2>
+        <p class="split-content-text">
+          Do café da manhã ao jantar à luz de velas, nossos restaurantes e bares unem ingredientes frescos
+          do litoral a uma carta de vinhos selecionada. Tudo isso em decks abertos com vista para a baía.
+        </p>
+        <ul class="split-list">
+          <li>
+            <div class="split-list-bullet">✦</div>
+            <div>
+              Restaurante Brisa – buffet completo de café da manhã, com frutas, pães artesanais e opções quentes.
+            </div>
+          </li>
+          <li>
+            <div class="split-list-bullet">✦</div>
+            <div>
+              Terraço Aurora – jantar à la carte com foco em frutos do mar e massas frescas.
+            </div>
+          </li>
+          <li>
+            <div class="split-list-bullet">✦</div>
+            <div>
+              Lounge Sunset – drinks autorais e petiscos ao som do pôr do sol.
+            </div>
+          </li>
+          <li>
+            <div class="split-list-bullet">✦</div>
+            <div>
+              Cardápios adaptados – opções vegetarianas, veganas e sem glúten sob consulta.
+            </div>
+          </li>
+        </ul>
+        <button class="btn-primary" data-modal="booking">
+          Ver sugestões de menu
+        </button>
+      </div>
+
+      <div class="split-media reveal">
+        <div class="split-main-image">
+          <!-- imagem corrigida -->
+          <img src="https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Restaurante com vista para o mar" />
+        </div>
+        <div class="split-floating-card">
+          <strong>Jantar ao pôr do sol</strong>
+          <p>
+            Mesas de frente para o mar, iluminação aconchegante e pratos pensados para harmonizar
+            com o final de tarde da orla.
+          </p>
+          <div class="split-floating-meta">
+            <span>⏱ 19h às 22h30</span>
+            <span>✺ Reservas recomendadas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCES -->
+  <section class="section" id="experiences">
+    <div class="container split-section">
+      <div class="split-media reveal">
+        <div class="split-main-image">
+          <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Piscina com vista para o mar" />
+        </div>
+        <div class="split-floating-card" style="bottom:-18px;left:auto;right:-10px;">
+          <strong>Bem-estar completo</strong>
+          <p>
+            Piscina aquecida, sauna úmida, massagens relaxantes e espaço fitness com vista para o mar.
+          </p>
+          <div class="split-floating-meta">
+            <span>☼ SPA Aurora</span>
+            <span>⏱ 10h às 20h</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="split-content reveal">
+        <div class="split-content-eyebrow">Experiências</div>
+        <h2 class="split-content-title">Do mergulho à trilha em meio à mata</h2>
+        <p class="split-content-text">
+          A equipe de experiências do Aurora Bay cuida de tudo: passeios de barco privativos, trilhas guiadas,
+          mergulhos e roteiros personalizados para você aproveitar o melhor do destino.
+        </p>
+        <ul class="split-list">
+          <li>
+            <div class="split-list-bullet">✓</div>
+            <div>Passeios de barco ao pôr do sol com espumante incluso.</div>
+          </li>
+          <li>
+            <div class="split-list-bullet">✓</div>
+            <div>Mergulhos guiados em águas cristalinas com instrutor credenciado.</div>
+          </li>
+          <li>
+            <div class="split-list-bullet">✓</div>
+            <div>Trilhas em mirantes com vista panorâmica da região.</div>
+          </li>
+          <li>
+            <div class="split-list-bullet">✓</div>
+            <div>Roteiros românticos e pacotes para datas especiais.</div>
+          </li>
+        </ul>
+        <button class="btn-primary" data-modal="booking">
+          Falar com concierge
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTINO -->
+  <section class="section destination-section" id="island">
+    <div class="container destination-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">Destino</div>
+        <h2 class="section-title">Uma ilha de natureza preservada</h2>
+        <p class="section-subtitle" style="margin-bottom:1.3rem;">
+          O Aurora Bay está em uma baía tranquila cercada por mata atlântica, com mar calmo e trilhas que
+          levam a mirantes naturais inesquecíveis.
+        </p>
+        <div class="destination-pill-row">
+          <span class="destination-pill">☀ 300 dias de sol por ano</span>
+          <span class="destination-pill">⛵ Passeios de barco e veleiros</span>
+          <span class="destination-pill">🌿 Trilhas e cachoeiras</span>
+        </div>
+        <div class="destination-highlight">
+          <div class="destination-highlight-icon">⛰</div>
+          <div>
+            <strong>Do quarto ao mirante em poucos minutos</strong>
+            <span>
+              Trilhas leves começam a poucos metros do hotel, levando a vistas 360° da região
+              e pontos perfeitos para ver o nascer e o pôr do sol.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="destination-gallery reveal">
+        <div class="destination-image-main" style="position:relative;">
+          <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Vista aérea da baía" />
+          <div class="destination-badge">
+            <span class="destination-badge-dot"></span>
+            A poucos passos da água
+          </div>
+        </div>
+        <div class="destination-image-small">
+          <img src="https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Trilha com mirante e vista para o mar" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Galeria</div>
+        <h2 class="section-title">Uma prévia do que te espera</h2>
+        <p class="section-subtitle">
+          Piscinas, áreas externas, gastronomia e suítes que traduzem a essência do Aurora Bay.
+          Todas as imagens podem ser substituídas pelas fotos oficiais do seu hotel.
+        </p>
+      </div>
+
+      <div class="gallery-grid reveal">
+        <div class="gallery-item">
+          <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Piscina ao lado do mar" />
+          <div class="gallery-overlay"></div>
+          <div class="gallery-caption">
+            <div>
+              <strong>Piscina de borda infinita</strong>
+              <div>Vista para toda a baía</div>
+            </div>
+            <span>▸</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.pexels.com/photos/237272/pexels-photo-237272.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Deck de madeira com vista para o mar" />
+          <div class="gallery-overlay"></div>
+          <div class="gallery-caption">
+            <div>
+              <strong>Deck sunset</strong>
+              <div>Drinks ao pôr do sol</div>
+            </div>
+            <span>▸</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.pexels.com/photos/237371/pexels-photo-237371.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Restaurante com janelas amplas" />
+          <div class="gallery-overlay"></div>
+          <div class="gallery-caption">
+            <div>
+              <strong>Restaurante panorâmico</strong>
+              <div>Gastronomia autoral</div>
+            </div>
+            <span>▸</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.pexels.com/photos/237272/pexels-photo-237272.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Píer e mar ao entardecer" />
+          <div class="gallery-overlay"></div>
+          <div class="gallery-caption">
+            <div>
+              <strong>Píer exclusivo</strong>
+              <div>Saídas para passeios de barco</div>
+            </div>
+            <span>▸</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section reviews-section">
+    <div class="container">
+      <div class="section-header reviews-header reveal">
+        <div class="section-eyebrow">Avaliações</div>
+        <h2 class="section-title">Quem já ficou não vê a hora de voltar</h2>
+        <p class="section-subtitle">
+          Esses são alguns dos comentários que inspiram nossa equipe todos os dias. Use esta seção para
+          trazer depoimentos reais dos hóspedes.
+        </p>
+      </div>
+
+      <div class="reviews-grid reveal">
+        <div class="score-card">
+          <div class="score-value">
+            9,4 <span class="total">/ 10</span>
+          </div>
+          <div class="score-stars">★★★★★</div>
+          <div class="score-meta">
+            Média geral com base em <strong>1.248 avaliações verificadas</strong> nos últimos 12 meses.
+          </div>
+          <div class="score-badges">
+            <span class="score-badge">Localização</span>
+            <span class="score-badge">Conforto</span>
+            <span class="score-badge">Equipe</span>
+            <span class="score-badge">Gastronomia</span>
+          </div>
+        </div>
+
+        <div class="reviews-list">
+          <article class="review-item">
+            <div class="review-header">
+              <div>
+                <strong>Ana &amp; Rafael</strong> · casal
+              </div>
+              <span class="review-badge">Viagem romântica</span>
+            </div>
+            <p>
+              “Foi a nossa melhor viagem juntos. Dormir ouvindo o som do mar e acordar com aquela vista
+              não tem preço. Voltaremos em todas as datas especiais.”
+            </p>
+          </article>
+          <article class="review-item">
+            <div class="review-header">
+              <div>
+                <strong>Família Silva</strong> · 2 adultos + 2 crianças
+              </div>
+              <span class="review-badge">Férias em família</span>
+            </div>
+            <p>
+              “As crianças amaram a piscina e os passeios de barco. A equipe foi extremamente atenciosa,
+              sempre com um sorriso no rosto.”
+            </p>
+          </article>
+          <article class="review-item">
+            <div class="review-header">
+              <div>
+                <strong>Mariana</strong> · viagem solo
+              </div>
+              <span class="review-badge">Reconexão</span>
+            </div>
+            <p>
+              “Eu precisava de alguns dias de pausa e não poderia ter escolhido lugar melhor. Trilha,
+              spa, silêncio e um café da manhã impecável.”
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">FAQ</div>
+        <h2 class="section-title">Perguntas frequentes</h2>
+        <p class="section-subtitle">
+          Use esta seção para responder às principais dúvidas dos hóspedes antes da reserva.
+        </p>
+      </div>
+
+      <div class="faq-accordion reveal">
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>Qual é o horário de check-in e check-out?</span>
+            <span class="faq-toggle-icon">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              O check-in é a partir das 14h e o check-out até às 12h. Caso precise antecipar a chegada
+              ou estender a saída, consulte nossa equipe de reservas – faremos o possível para acomodar sua necessidade.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>O café da manhã está incluído na diária?</span>
+            <span class="faq-toggle-icon">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Sim. Todas as diárias incluem café da manhã completo servido no Restaurante Brisa,
+              com opções de frutas, pães artesanais, itens quentes e opções saudáveis.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>O hotel aceita crianças? Há estrutura para família?</span>
+            <span class="faq-toggle-icon">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Sim, crianças são muito bem-vindas. Contamos com categorias de suítes família, berços sob solicitação
+              e atividades recomendadas pela nossa equipe de experiências.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>É possível cancelar ou alterar a reserva?</span>
+            <span class="faq-toggle-icon">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              As reservas feitas diretamente conosco possuem políticas flexíveis. Em grande parte das tarifas,
+              é possível cancelar ou alterar datas com até 7 dias de antecedência sem cobrança de multa.
+              Verifique as condições específicas no momento da reserva.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            <span>O hotel oferece estacionamento?</span>
+            <span class="faq-toggle-icon">▾</span>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Sim, oferecemos estacionamento para hóspedes sem custo adicional, sujeito à disponibilidade.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact-section" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-card reveal">
+        <h3>Planeje sua estadia</h3>
+        <p>
+          Conte para nós qual é o objetivo da sua viagem e nossa equipe monta as melhores opções
+          de quarto, experiências e datas para você.
+        </p>
+
+        <div class="contact-details">
+          <span>
+            <label>Telefone</label>
+            <span>+55 (11) 4000-2025</span>
+          </span>
+          <span>
+            <label>E-mail</label>
+            <span>reservas@aurorabayhotel.com</span>
+          </span>
+          <span>
+            <label>Endereço</label>
+            <span>Baía Aurora, Ilhabela – SP, Brasil</span>
+          </span>
+        </div>
+
+        <form class="contact-form">
+          <div class="contact-form-row">
+            <input type="text" name="nome" placeholder="Seu nome" required />
+            <input type="email" name="email" placeholder="Seu e-mail" required />
+          </div>
+          <div class="contact-form-row">
+            <input type="text" name="datas" placeholder="Datas desejadas" />
+            <input type="text" name="hospedes" placeholder="Número de hóspedes" />
+          </div>
+          <textarea name="mensagem" placeholder="Conte um pouco sobre a sua viagem (ocasião, preferências, dúvidas)…"></textarea>
+          <button type="submit" class="btn-primary" style="align-self:flex-start;">
+            Enviar mensagem
+          </button>
+        </form>
+      </div>
+
+      <div class="contact-map reveal">
+        <!-- Mapa de Ilhabela (pode trocar pelo local do hotel real) -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d373752.320205589!2d-45.62964575!3d-23.78144095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cd5b1d2c6930f9%3A0xf7d72ab3a8b80b9!2sIlhabela%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Aurora Bay Hotel · Todos os direitos reservados.</div>
+      <div class="footer-links">
+        <a href="#top">Voltar ao topo</a>
+        <span>·</span>
+        <a href="#rooms">Suítes</a>
+        <span>·</span>
+        <a href="#contact">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="bookingModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" type="button" aria-label="Fechar">×</button>
+      <h3 id="modalTitle">Reserva online</h3>
+      <p>
+        Aqui será direcionado para seu motor de reservas ou WhatsApp.
+      </p>
+      <small>
+        Nesta versão de demonstração, o botão apenas exibe esta mensagem. No site final, você pode
+        conectar o link direto do seu motor de reservas ou do WhatsApp Business.
+      </small>
+    </div>
+  </div>
+
+  <script>
+    // Ano no rodapé
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Navbar scroll
+    const navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 40) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    // Mobile nav
+    const navToggle = document.getElementById("navToggle");
+    const navMenuMobile = document.getElementById("navMenuMobile");
+    navToggle.addEventListener("click", () => {
+      navToggle.classList.toggle("active");
+      navMenuMobile.classList.toggle("open");
+    });
+    navMenuMobile.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navToggle.classList.remove("active");
+        navMenuMobile.classList.remove("open");
+      });
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18 }
+    );
+    reveals.forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach(item => {
+      const question = item.querySelector(".faq-question");
+      question.addEventListener("click", () => {
+        item.classList.toggle("open");
+      });
+    });
+
+    // Modal
+    const modalOverlay = document.getElementById("bookingModal");
+    const modalClose = modalOverlay.querySelector(".modal-close");
+
+    function openModal() {
+      modalOverlay.classList.add("open");
+      modalOverlay.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove("open");
+      modalOverlay.setAttribute("aria-hidden", "true");
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modalOverlay.addEventListener("click", e => {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && modalOverlay.classList.contains("open")) {
+        closeModal();
+      }
+    });
+
+    // Botões que abrem o modal (reservas/contato)
+    const bookingButtons = document.querySelectorAll("[data-modal='booking']");
+    bookingButtons.forEach(btn => {
+      btn.addEventListener("click", e => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    // Formulário de contato abre modal
+    const contactForm = document.querySelector(".contact-form");
+    if (contactForm) {
+      contactForm.addEventListener("submit", e => {
+        e.preventDefault();
+        openModal();
+      });
+    }
+  </script>
+</body>
+</html>
