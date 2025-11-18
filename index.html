@@ -381,18 +381,19 @@
 
     /* HERO */
 
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      color: #ffffff;
-      padding-top: var(--nav-height);
-      padding-bottom: 7rem;
-      background-color: #020617;
-      overflow: hidden;
-    }
+.hero {
+  position: relative;
+  z-index: 5; /* <- NOVO: garante que o hero (e o card) fiquem acima da próxima seção */
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  color: #ffffff;
+  padding-top: var(--nav-height);
+  padding-bottom: 7.5rem;
+  background-color: #020617;
+  overflow: hidden;
+}
 
     .hero-bg {
       position: absolute;
@@ -619,7 +620,8 @@
   left: 0;
   bottom: 2.4rem;
   width: 100%;
-  z-index: 5;
+  z-index: 20;        /* mais alto para ficar clicável */
+  pointer-events: auto;
 }
 
 .hero-booking-bar {
@@ -628,21 +630,21 @@
   background: rgba(15, 23, 42, 0.96);
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.7);
-  /* sombra menor para não “invadir” tanto a seção de baixo */
   box-shadow: 0 16px 30px rgba(15, 23, 42, 0.85);
   display: flex;
   align-items: center;
   gap: 1.4rem;
   padding: 0.8rem 1.8rem;
   backdrop-filter: blur(18px);
+  position: relative;
 }
 
 .hero-booking-form {
   display: flex;
   align-items: center;
-  gap: 1.2rem;      /* ligeiramente menor pra caber melhor */
+  gap: 1.2rem;
   flex: 1;
-  flex-wrap: wrap;  /* NOVO: permite quebrar linha quando faltar espaço */
+  flex-wrap: wrap; /* permite quebrar sem cortar nada */
 }
 
 .hero-booking-field {
@@ -654,12 +656,10 @@
   min-width: 0;
 }
 
-/* campo de datas fica mais largo para os dois inputs caberem lado a lado */
 .hero-booking-field:first-child {
-  flex: 1.4;
+  flex: 1.4; /* datas mais largas */
 }
 
-/* adultos / crianças mais compactos */
 .hero-booking-field:nth-child(2),
 .hero-booking-field:nth-child(3) {
   flex: 0.6;
@@ -710,7 +710,7 @@
   appearance: none;
 }
 
-/* select ocupa toda a largura do grupo, fica mais fácil clicar */
+/* select ocupa tudo e fica mais escuro/legível */
 .hero-booking-input-group select {
   width: 100%;
   padding-right: 1.6rem;
@@ -718,7 +718,6 @@
   color: #e5e7eb;
 }
 
-/* melhora contraste dentro do dropdown */
 .hero-booking-input-group select option {
   background-color: #020617;
   color: #e5e7eb;
@@ -737,7 +736,6 @@
   width: 100%;
 }
 
-/* largura fixa para não “invadir” o campo de adultos */
 .hero-booking-date-range input {
   width: 115px;
 }
@@ -1635,9 +1633,13 @@
 
   /* card de reserva passa a ser bloco normal, logo abaixo do hero */
   .hero-booking-wrapper {
-    position: static;
+    position: relative;   /* era static */
+    left: 0;
+    bottom: auto;
+    width: 100%;
     padding: 0 1.5rem 0;
     margin-top: 1.4rem;
+    z-index: 20;          /* garante que fique acima do overlay */
   }
 
   .hero-booking-bar {
